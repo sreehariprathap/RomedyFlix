@@ -1,0 +1,4 @@
+@import './assets/styles/library.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
