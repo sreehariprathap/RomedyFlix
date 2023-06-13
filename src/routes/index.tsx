@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Applayout from "../layouts/Applayout"
+import LandingLayout from "../features/landing/layouts/LandingLayout"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <Applayout>
-
+        <LandingLayout />
       </Applayout>
     ),
     errorElement: (

@@ -14,9 +14,9 @@ const SearchBar = () => {
     <div className="relative flex items-center">
       <motion.div
         className={`flex flex-col justify-between items-center px-3 py-2 rounded-md b`}
-        initial={{ width: 40 }}
-        animate={{ width: isExpanded ? "100%" : 40 }}
-        transition={{ duration: 0.7 }}
+        initial={{ width: 70 }}
+        animate={{ width: isExpanded ? "100%" : 50 }}
+        transition={{ duration: 0.3 }}
         onClick={handleToggleExpand}
       >
         {isExpanded ? (

@@ -1,9 +1,12 @@
+import { AppProvider } from "./providers/app"
 import AppRouter from "./routes"
 
 function App() {
   return (
     <>
-      <AppRouter />
+      <AppProvider>
+        <AppRouter />
+      </AppProvider>
     </>
   )
 }
