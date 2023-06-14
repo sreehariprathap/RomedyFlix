@@ -9,7 +9,7 @@ const sizes = {
 
 const variants = {
   light: 'text-white',
-  primary: 'text-blue-600',
+  primary: 'text-yellow-400',
 };
 
 export type SpinnerProps = {
@@ -34,7 +34,7 @@ export const Spinner = ({ size = 'md', variant = 'primary', className = '' }: Sp
           cy="12"
           r="10"
           stroke="currentColor"
-          strokeWidth="4"
+          strokeWidth=""
         ></circle>
         <path
           className="opacity-75"

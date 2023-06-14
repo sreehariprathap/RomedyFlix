@@ -1,5 +1,5 @@
 import Axios, { AxiosRequestConfig } from "axios"
-import { API_URL, TMDB_API_KEY } from "../config"
+import { API_URL, TMDB_API_KEY, TMDB_BEARER_TOKEN } from "../config"
 import storage from "../utils/storage"
 import { useNotificationStore } from "../stores/notifications"
 
@@ -9,11 +9,10 @@ function authRequestInterceptor(config: AxiosRequestConfig | any) {
     if (token) {
       config.headers.authorization = `${token}`
     }
+    config.headers.authorization =`Bearer ${TMDB_BEARER_TOKEN}` 
     config.headers.Accept = "application/json"
     config.params = {
-      ...config.params,
-      api_key: TMDB_API_KEY,
-      language: "en-US"
+      ...config.params
     }
     return config
   }
