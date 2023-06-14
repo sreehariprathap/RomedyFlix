@@ -36,8 +36,8 @@ const Navbar = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       className={`${
-        isNavbarTop ? "bg-dark" : "bg-nav-tint "
-      }  py-3 px-5 sticky top-0 flex justify-between items-center lg:h-[5rem] z-10 flex-col lg:flex-row`}
+        isNavbarTop ? "bg-nav-tint" : "bg-dark "
+      }  py-3 px-5 fixed w-full top-0 flex justify-between items-center lg:h-[5rem] z-10 flex-col lg:flex-row`}
     >
       <div className="flex gap-14 items-center w-full justify-between">
         <div className="flex items-center gap-10">
