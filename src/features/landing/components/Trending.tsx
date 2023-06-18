@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Navigation, Autoplay } from "swiper"
@@ -10,13 +11,19 @@ import "swiper/css/scrollbar"
 import { getImageSrcWithAPIKey } from "../api/getImage"
 import { Languages, MovieGenre, TVgenre } from "../../../config/Constants"
 import AppButton from "../../../components/Buttons/AppButton"
+import ProgrammeCard from "../../../components/Cards/ProgrammeCard"
+import { useWatchables } from "../api/getWatchables"
 
 const Trending: React.FC<any> = ({ trendingData }) => {
   return (
     <div>
       <Swiper
         pagination={{
-          dynamicBullets: true,
+          el: ".my-custom-pagination-div",
+          clickable: true,
+          renderBullet: (index, className) => {
+            return '<span class="bg-red-300 w-2 h-2">' + (index + 1) + "</span>"
+          },
         }}
         modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={10}
@@ -38,15 +45,23 @@ const Trending: React.FC<any> = ({ trendingData }) => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
-              className={` bg-cover bg-no-repeat bg-bottom h-[55rem] w-full `}
+              className={` bg-cover bg-no-repeat bg-bottom h-[47rem] w-full `}
             >
-              <div className="absolute bottom-0 h-[28rem] bg-black-tint p-10 w-full flex flex-col gap-3 items-start">
+              <div className="absolute bottom-0 h-[20rem] bg-black-tint p-10 w-full flex flex-col gap-3 items-start">
                 <h1 className="text-5xl text-white ">
                   {trending.name || trending.title}
                 </h1>
                 <div className="flex gap-3 my-4">
-                  <AppButton styles={"bg-slate-100 hover:bg-slate-200 "} text={"play"} icon={'play'} />
-                  <AppButton styles={"bg-dark text-white hover:bg-dark-secondary"} text={"more info"} icon={'info'}/>
+                  <AppButton
+                    styles={"bg-slate-100 hover:bg-slate-200 "}
+                    text={"play"}
+                    icon={"play"}
+                  />
+                  <AppButton
+                    styles={"bg-dark text-white hover:bg-dark-secondary"}
+                    text={"more info"}
+                    icon={"info"}
+                  />
                 </div>
                 <div className="flex items-center gap-5">
                   <p className="text-black bg-white rounded-full font-medium px-2 py-1 shadow-xl shadow-[#ffffff3c]">
@@ -68,7 +83,28 @@ const Trending: React.FC<any> = ({ trendingData }) => {
             </div>
           </SwiperSlide>
         ))}
+        <div className="flex flex-col p-[3rem] mb-10">
+          <h2 className=" text-3xl font-bold">Romedy shows</h2>
+          {getRomedyProgrammes()}
+        </div>
       </Swiper>
+    </div>
+  )
+}
+
+const getRomedyProgrammes = () => {
+  const romedyData = useWatchables({ type: "movie", genreId: "35" })
+  return (
+    <div className=" bg-transparent h-[33rem] flex gap-4 items-center">
+      {romedyData.data?.results.map((result, i) => {
+        return (
+          <ProgrammeCard
+            index={i}
+            totalItems={result.length}
+            imageUrl={getImageSrcWithAPIKey(result.poster_path)}
+          />
+        )
+      })}
     </div>
   )
 }

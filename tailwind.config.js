@@ -15,7 +15,7 @@ export default {
         primary: "#FB8500",
         secondary: "#FBB500",
         dark: "#080202",
-        "dark-secondary": "#374259",
+        "dark-secondary": "#2B2730",
         light: "#F1F6F9",
         "light-secondary":"#FFFAF4"
       },
@@ -25,5 +25,5 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
