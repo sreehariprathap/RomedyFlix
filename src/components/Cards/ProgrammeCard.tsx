@@ -1,10 +1,13 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import RoundActionButton from "../Buttons/RoundActionButton"
+import { getImageSrcWithAPIKey } from "../../features/landing/api/getImage"
 
-const ProgrammeCard = ({ title, description, imageUrl, index, totalItems }) => {
+const ProgrammeCard = ({
+  description,
+  programme,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false)
-
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded)
   }
@@ -21,11 +24,11 @@ const ProgrammeCard = ({ title, description, imageUrl, index, totalItems }) => {
       whileHover={{ opacity: 1, scale: 1.1 }}
       transition={{ duration: 0.3 }}
       onMouseEnter={toggleExpansion}
-      onMouseLeave={toggleExpansion}
+      onMouseLeave={()=>setIsExpanded(false)}
       variants={expandingCardVariants}
     >
-      <div className="w-[13rem] h-[30rem] flex items-end flex-col">
-        <img src={imageUrl} alt="" />
+      <div className="w-[13rem] h-[25rem] flex items-end flex-col">
+        <img src={getImageSrcWithAPIKey(programme.poster_path)} alt="" />
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0 }}

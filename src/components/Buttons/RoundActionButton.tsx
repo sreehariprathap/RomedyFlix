@@ -4,7 +4,7 @@ import {
   PlayIcon,
 } from "@heroicons/react/24/solid"
 
-const RoundActionButton = ({ icon, styles, action, hoverText }) => {
+const RoundActionButton: React.FC<any> = ({ icon, styles, action, hoverText }) => {
   const getIcon = (text) => {
     switch (text) {
       case "play":

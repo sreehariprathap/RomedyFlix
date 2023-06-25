@@ -13,6 +13,7 @@ import { Languages, MovieGenre, TVgenre } from "../../../config/Constants"
 import AppButton from "../../../components/Buttons/AppButton"
 import ProgrammeCard from "../../../components/Cards/ProgrammeCard"
 import { useWatchables } from "../api/getWatchables"
+import Carousal from "../../../components/Carousal/Carousal"
 
 const Trending: React.FC<any> = ({ trendingData }) => {
   return (
@@ -21,7 +22,7 @@ const Trending: React.FC<any> = ({ trendingData }) => {
         pagination={{
           el: ".my-custom-pagination-div",
           clickable: true,
-          renderBullet: (index, className) => {
+          renderBullet: (index) => {
             return '<span class="bg-red-300 w-2 h-2">' + (index + 1) + "</span>"
           },
         }}
@@ -53,7 +54,7 @@ const Trending: React.FC<any> = ({ trendingData }) => {
                 </h1>
                 <div className="flex gap-3 my-4">
                   <AppButton
-                    styles={"bg-slate-100 hover:bg-slate-200 "}
+                    styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
                     text={"play"}
                     icon={"play"}
                   />
@@ -83,8 +84,7 @@ const Trending: React.FC<any> = ({ trendingData }) => {
             </div>
           </SwiperSlide>
         ))}
-        <div className="flex flex-col p-[3rem] mb-10">
-          <h2 className=" text-3xl font-bold">Romedy shows</h2>
+        <div className="flex flex-col p-[1rem] pr-10 mb-10">
           {getRomedyProgrammes()}
         </div>
       </Swiper>
@@ -96,15 +96,7 @@ const getRomedyProgrammes = () => {
   const romedyData = useWatchables({ type: "movie", genreId: "35" })
   return (
     <div className=" bg-transparent h-[33rem] flex gap-4 items-center">
-      {romedyData.data?.results.map((result, i) => {
-        return (
-          <ProgrammeCard
-            index={i}
-            totalItems={result.length}
-            imageUrl={getImageSrcWithAPIKey(result.poster_path)}
-          />
-        )
-      })}
+        <Carousal title={"Comedy"} programmes={romedyData.data?.results}  />
     </div>
   )
 }
