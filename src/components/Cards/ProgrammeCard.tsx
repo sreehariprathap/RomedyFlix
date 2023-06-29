@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import RoundActionButton from "../Buttons/RoundActionButton"
 import { getImageSrcWithAPIKey } from "../../features/landing/api/getImage"
+import { Languages, MovieGenre } from "../../config/Constants"
 
 const ProgrammeCard: React.FC<any> = ({ programme }) => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -35,18 +36,39 @@ const ProgrammeCard: React.FC<any> = ({ programme }) => {
             transition={{ duration: 0.5 }}
             className="py-2 px-2 text-white bg-dark-secondary text-sm w-full"
           >
-            <h2 className="pb-1 line-clamp-1">{programme.original_title || programme.title}</h2>
-            <div className="action-bar p-1 flex gap-3 pt-2">
-              <RoundActionButton
-                icon={"play"}
-                styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
-                hoverText={"Play"}
-              />
-              <RoundActionButton
-                icon={"down"}
-                styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
-                hoverText={"Episode and info"}
-              />
+            <h2 className="pb-1 line-clamp-1 font-bold text-white text-xl">
+              {programme.original_title || programme.title}
+            </h2>
+            <div className="action-bar p-1 flex gap-3 pt-2 justify-between">
+              <div className="flex gap-3">
+                <RoundActionButton
+                  icon={"play"}
+                  styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
+                  hoverText={"Play"}
+                />
+                <RoundActionButton
+                  icon={"info"}
+                  styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
+                  hoverText={"Episode and info"}
+                />
+              </div>
+              <div className="flex gap-3">
+                <div className="bg-primary text-white rounded-md p-1 text-sm font-medium">
+                  {programme.vote_average}
+                </div>
+                <div className="border bg-transparent flex justify-center items-center rounded-md px-1">
+                  <p className="text-[0.5rem]"> U/A 13+</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-1 pt-1 items-center">
+              <div className="text-white p-1 text-sm font-medium">
+                {Languages[programme.original_language]}
+              </div>
+              <div>|</div>
+              <div className="text-white p-1 text-sm font-medium">
+                  {MovieGenre[programme.genre_ids[0]]}
+              </div>
             </div>
           </motion.div>
         )}

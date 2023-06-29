@@ -59,7 +59,7 @@ const Carousal: React.FC<any> = ({ title, programmes, type, styles }) => {
         <ScrollButton isPrevious={false} action={handleScrollLeft} />
         <div
           ref={scrollContainerRef}
-          className="py-8 flex flex-row gap-5 mr-10 items-end w-[100vw] overflow-x-auto scrollbar-hide pl-5 pr-16"
+          className="pt-8 pb-20 flex flex-row gap-5 mr-10 items-end w-[100vw] overflow-x-auto scrollbar-hide pl-5 pr-16"
         >
           {programmes?.map((programme: any, index: any) =>
             renderCard("products", programme, index, inViewRef, inView)

@@ -1,6 +1,6 @@
 import {
   ChevronDoubleDownIcon,
-  InformationCircleIcon,
+  EllipsisVerticalIcon,
   PlayIcon,
 } from "@heroicons/react/24/solid"
 
@@ -10,7 +10,7 @@ const RoundActionButton: React.FC<any> = ({ icon, styles, action, hoverText }) =
       case "play":
         return <PlayIcon className="w-6 h-6" />
       case "info":
-        return <InformationCircleIcon className="w-6 h-6" />
+        return <EllipsisVerticalIcon className="w-6 h-6" />
       default:
         return <ChevronDoubleDownIcon className="w-6 h-6" />
     }

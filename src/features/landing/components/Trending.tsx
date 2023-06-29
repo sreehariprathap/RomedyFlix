@@ -2,16 +2,15 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Navigation, Autoplay } from "swiper"
-
 // Import Swiper styles
 import "swiper/css"
 import "swiper/css/pagination"
 // import "swiper/css/navigation"
 import "swiper/css/scrollbar"
+
 import { getImageSrcWithAPIKey } from "../api/getImage"
 import { Languages, MovieGenre, TVgenre } from "../../../config/Constants"
 import AppButton from "../../../components/Buttons/AppButton"
-import ProgrammeCard from "../../../components/Cards/ProgrammeCard"
 import { useWatchables } from "../api/getWatchables"
 import Carousal from "../../../components/Carousal/Carousal"
 
@@ -96,7 +95,7 @@ const getRomedyProgrammes = () => {
   const romedyData = useWatchables({ type: "movie", genreId: "35" })
   return (
     <div className=" bg-transparent h-[33rem] flex gap-4 items-center">
-        <Carousal title={"Comedy"} programmes={romedyData.data?.results}  />
+        <Carousal title={"Comedy"} programmes={romedyData.data?.results} />
     </div>
   )
 }
