@@ -3,14 +3,13 @@ import { useState } from "react"
 import RoundActionButton from "../Buttons/RoundActionButton"
 import { getImageSrcWithAPIKey } from "../../features/landing/api/getImage"
 import { Languages, MovieGenre } from "../../config/Constants"
+import { ProgrammeCardProps } from "../../config/Types"
 
-const ProgrammeCard: React.FC<any> = ({ programme }) => {
+const ProgrammeCard: React.FC<ProgrammeCardProps> = ({ programme }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded)
   }
-
-  console.log(programme)
 
   const expandingCardVariants = {
     hidden: { opacity: 0, x: 10 },
@@ -19,7 +18,7 @@ const ProgrammeCard: React.FC<any> = ({ programme }) => {
 
   return (
     <motion.div
-      className="card hover:z-10"
+      className="card hover:z-10  h-full hover:shadow-2xl hover:shadow-gray-800 duration-300 ease-linear"
       initial={{ opacity: 1, scale: 1, originX: 0.5, originY: 0.5 }}
       whileHover={{ opacity: 1, scale: 1.1 }}
       transition={{ duration: 0.3 }}
@@ -27,17 +26,17 @@ const ProgrammeCard: React.FC<any> = ({ programme }) => {
       onMouseLeave={() => setIsExpanded(false)}
       variants={expandingCardVariants}
     >
-      <div className="w-[13rem] h-[25rem] flex items-end flex-col">
+      <div className="w-[13rem] h-[25rem] flex items-end flex-col ">
         <img src={getImageSrcWithAPIKey(programme.poster_path)} alt="" />
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="py-2 px-2 text-white bg-dark-secondary text-sm w-full"
+            className="py-2 px-2 text-white bg-dark text-sm w-full"
           >
             <h2 className="pb-1 line-clamp-1 font-bold text-white text-xl">
-              {programme.original_title || programme.title}
+              {programme.title || programme.original_title}
             </h2>
             <div className="action-bar p-1 flex gap-3 pt-2 justify-between">
               <div className="flex gap-3">
@@ -63,11 +62,15 @@ const ProgrammeCard: React.FC<any> = ({ programme }) => {
             </div>
             <div className="flex gap-1 pt-1 items-center">
               <div className="text-white p-1 text-sm font-medium">
-                {Languages[programme.original_language]}
+                {
+                  Languages[
+                    programme.original_language as keyof typeof Languages
+                  ]
+                }
               </div>
               <div>|</div>
               <div className="text-white p-1 text-sm font-medium">
-                  {MovieGenre[programme.genre_ids[0]]}
+                {MovieGenre[programme.genre_ids[0]]}
               </div>
             </div>
           </motion.div>

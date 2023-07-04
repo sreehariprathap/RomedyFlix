@@ -16,6 +16,7 @@ export default {
         secondary: "#FBB500",
         dark: "#080202",
         "dark-secondary": "#2B2730",
+        "dark-thired": "#081c15",
         light: "#F1F6F9",
         "light-secondary":"#FFFAF4"
       },

@@ -11,7 +11,6 @@ import "swiper/css/scrollbar"
 import { getImageSrcWithAPIKey } from "../api/getImage"
 import { Languages, MovieGenre, TVgenre } from "../../../config/Constants"
 import AppButton from "../../../components/Buttons/AppButton"
-import { useWatchables } from "../api/getWatchables"
 import Carousal from "../../../components/Carousal/Carousal"
 
 const Trending: React.FC<any> = ({ trendingData }) => {
@@ -84,18 +83,11 @@ const Trending: React.FC<any> = ({ trendingData }) => {
           </SwiperSlide>
         ))}
         <div className="flex flex-col p-[1rem] pr-10 mb-10">
-          {getRomedyProgrammes()}
+          <div className="bg-transparent h-[23rem] hover:h-[33rem] flex gap-4 items-start duration-150 ease-linear">
+            <Carousal title={"Comedy"} genreId={"35"} cardType={"ProgrammeCard"} />
+          </div>
         </div>
       </Swiper>
-    </div>
-  )
-}
-
-const getRomedyProgrammes = () => {
-  const romedyData = useWatchables({ type: "movie", genreId: "35" })
-  return (
-    <div className=" bg-transparent h-[33rem] flex gap-4 items-center">
-        <Carousal title={"Comedy"} programmes={romedyData.data?.results} />
     </div>
   )
 }
