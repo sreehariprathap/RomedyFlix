@@ -5,12 +5,12 @@ import { getImageSrcWithAPIKey } from "../../features/landing/api/getImage"
 import { MovieGenre } from "../../config/Constants"
 import { ProgrammeCardProps } from "../../config/Types"
 
-const SimpleCard: React.FC<ProgrammeCardProps> = ({ programme }) => {
+const SimpleCard: React.FC<ProgrammeCardProps> = ({ programme, index }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded)
   }
-  console.log(programme)
+  
   const expandingCardVariants = {
     hidden: { opacity: 0, x: 10 },
     visible: { opacity: 1, x: 0 },
@@ -18,6 +18,7 @@ const SimpleCard: React.FC<ProgrammeCardProps> = ({ programme }) => {
 
   return (
     <motion.div
+      key={index}
       className="card hover:z-10 hover:shadow-2xl hover:shadow-gray-800 duration-300 ease-linear "
       initial={{ opacity: 1, scale: 1, originX: 0.5, originY: 0.5 }}
       whileHover={{ opacity: 1, scale: 1.05 }}

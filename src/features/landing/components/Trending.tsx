@@ -12,8 +12,13 @@ import { getImageSrcWithAPIKey } from "../api/getImage"
 import { Languages, MovieGenre, TVgenre } from "../../../config/Constants"
 import AppButton from "../../../components/Buttons/AppButton"
 import Carousal from "../../../components/Carousal/Carousal"
+import { TrendingData } from "../types/trending.interface"
 
-const Trending: React.FC<any> = ({ trendingData }) => {
+interface TrendingProps {
+  trendingData: TrendingData[]
+}
+
+const Trending: React.FC<TrendingProps> = ({ trendingData }) => {
   return (
     <div>
       <Swiper
@@ -34,7 +39,7 @@ const Trending: React.FC<any> = ({ trendingData }) => {
         }}
         navigation
       >
-        {trendingData.map((trending: any) => (
+        {trendingData.map((trending: Trending) => (
           <SwiperSlide key={trending.id}>
             <div
               style={{
@@ -84,8 +89,21 @@ const Trending: React.FC<any> = ({ trendingData }) => {
         ))}
         <div className="flex flex-col p-[1rem] pr-10 mb-10">
           <div className="bg-transparent h-[23rem] hover:h-[33rem] flex gap-4 items-start duration-150 ease-linear">
-            <Carousal title={"Comedy"} genreId={"35"} cardType={"ProgrammeCard"} />
+            <Carousal
+              title={"Comedy"}
+              genreId={"35"}
+              cardType={"ProgrammeCard"}
+              styles=""
+            />
           </div>
+        </div>
+        <div className="bg-transparent group h-[20rem] flex gap-4 items-start duration-150 ease-linear group-hover:h-[33rem] px-5">
+          <Carousal
+            title={"Drama"}
+            genreId={"18"}
+            cardType={"SimpleCard"}
+            styles={"w-[100vw] oveflow-x-hidden"}
+          />
         </div>
       </Swiper>
     </div>
