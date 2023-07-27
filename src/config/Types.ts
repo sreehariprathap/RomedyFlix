@@ -7,6 +7,7 @@ export interface CarousalProps {
 
 export interface ProgrammeCardProps {
   programme: Programme
+  index: number
 }
 
 export interface Programme {

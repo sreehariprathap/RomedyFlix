@@ -45,7 +45,7 @@ const ProgramDetailsModal: React.FC<ModalProps> = ({
           method="dialog"
           className="w-[55rem] overflow-hidden rounded-2xl shadow-xl bg-dark relative "
         >
-          <div>
+          <div className="h-[25rem] overflow-hidden">
             <div className="absolute w-full bg-transparent hover:bg-gradient-to-b from-black to-transparent ease-in-out transition duration-300 h-10">
               <button
                 className="absolute right-0 px-2 py-1"
@@ -57,7 +57,7 @@ const ProgramDetailsModal: React.FC<ModalProps> = ({
             <img
               src={getImageSrcWithAPIKey(programData.backdrop_path)}
               alt=""
-              className="w-full h-[25rem]"
+              className="w-full"
             />
             <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <RoundActionButton
