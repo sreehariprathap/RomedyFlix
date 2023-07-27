@@ -4,8 +4,9 @@ import {
 } from "@heroicons/react/24/solid"
 import React from "react"
 import { Link } from "react-router-dom"
+import { AppButtonProps } from "../../config/Types"
 
-const getIcon = (text) => {
+const getIcon = (text: string) => {
   switch (text) {
     case "play":
       return <PlayCircleIcon className="w-6 h-6" />
@@ -15,7 +16,13 @@ const getIcon = (text) => {
       return <InformationCircleIcon className="w-6 h-6" />
   }
 }
-const AppButton: React.FC<any> = ({ styles, text, link, action, icon }) => {
+const AppButton: React.FC<AppButtonProps> = ({
+  styles,
+  text,
+  link,
+  action,
+  icon,
+}) => {
   return (
     <Link to={link}>
       <div

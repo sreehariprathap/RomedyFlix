@@ -7,7 +7,10 @@ export interface CarousalProps {
 
 export interface ProgrammeCardProps {
   programme: Programme
-  index: number
+  index?: number
+  inViewRef?: any
+  inView?: any
+  key?: any
 }
 
 export interface Programme {
@@ -25,4 +28,25 @@ export interface Programme {
   video: boolean
   vote_average: number
   vote_count: number
+}
+
+export interface RoundActionButtonProps {
+  icon: string
+  styles?: React.CSSProperties | any
+  action?: () => void
+  hoverText?: string
+}
+
+export interface ScrollButtonProps {
+  action: () => void
+  isPrevious?: boolean
+  isLarge?: boolean
+}
+
+export interface AppButtonProps {
+  styles?: React.CSSProperties | string
+  text: string
+  link?: any
+  action?: () => void
+  icon?: any
 }

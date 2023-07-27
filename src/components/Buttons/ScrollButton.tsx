@@ -1,7 +1,8 @@
 import React from "react"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
+import { ScrollButtonProps } from "../../config/Types"
 
-const ScrollButton: React.FC<any> = ({ action, isPrevious, isLarge }) => {
+const ScrollButton: React.FC<ScrollButtonProps> = ({ action, isPrevious, isLarge }) => {
   return (
     <>
       <button

@@ -41,8 +41,8 @@ const Carousal: React.FC<CarousalProps> = ({
     cardType: string,
     programme: Programme,
     index: number,
-    inViewRef: any,
-    inView: any
+    inViewRef: unknown,
+    inView: unknown
   ) => {
     switch (cardType) {
       case "ProgrammeCard":

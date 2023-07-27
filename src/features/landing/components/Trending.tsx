@@ -2,10 +2,8 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Navigation, Autoplay } from "swiper"
-// Import Swiper styles
 import "swiper/css"
 import "swiper/css/pagination"
-// import "swiper/css/navigation"
 import "swiper/css/scrollbar"
 
 import { getImageSrcWithAPIKey } from "../api/getImage"
@@ -39,7 +37,7 @@ const Trending: React.FC<TrendingProps> = ({ trendingData }) => {
         }}
         navigation
       >
-        {trendingData.map((trending: Trending) => (
+        {trendingData.map((trending: TrendingData) => (
           <SwiperSlide key={trending.id}>
             <div
               style={{

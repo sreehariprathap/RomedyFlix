@@ -3,9 +3,15 @@ import {
   EllipsisVerticalIcon,
   PlayIcon,
 } from "@heroicons/react/24/solid"
+import { RoundActionButtonProps } from "../../config/Types"
 
-const RoundActionButton: React.FC<any> = ({ icon, styles, action, hoverText }) => {
-  const getIcon = (text) => {
+const RoundActionButton: React.FC<RoundActionButtonProps> = ({
+  icon,
+  styles,
+  action,
+  hoverText,
+}) => {
+  const getIcon = (text: string) => {
     switch (text) {
       case "play":
         return <PlayIcon className="w-6 h-6" />

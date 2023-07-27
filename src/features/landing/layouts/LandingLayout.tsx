@@ -1,4 +1,3 @@
-import Carousal from "../../../components/Carousal/Carousal"
 import { Spinner } from "../../../components/Spinner/Spinner"
 import { useTrending } from "../api/getTrending"
 import Trending from "../components/Trending"
