@@ -1,8 +1,9 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { getImageSrcWithAPIKey } from "../../features/landing/api/getImage"
 import RoundActionButton from "../Buttons/RoundActionButton"
 import { XMarkIcon } from "@heroicons/react/24/solid"
 import { Languages, MovieGenre } from "../../config/Constants"
+import Player from "../Player/Player"
 
 interface ModalProps {
   id: string
@@ -17,6 +18,8 @@ const ProgramDetailsModal: React.FC<ModalProps> = ({
 }) => {
   const modalRef = useRef<HTMLDialogElement>(null)
 
+  const [isPlayer, setIsPlayer] = useState(false)
+
   const showModal = () => {
     const modal = modalRef.current
     if (modal) {
@@ -27,8 +30,38 @@ const ProgramDetailsModal: React.FC<ModalProps> = ({
   const closeModal = () => {
     const modal = modalRef.current
     if (modal) {
+      setIsPlayer(false)
       modal.close()
     }
+  }
+
+  const togglePlayer = () => {
+    setIsPlayer(true)
+  }
+
+  const PosterView = () => {
+    return (
+      <>
+        <img
+          src={getImageSrcWithAPIKey(programData.backdrop_path)}
+          alt=""
+          className="w-full"
+        />
+        <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <RoundActionButton
+            icon={"play"}
+            styles={
+              "bg-slate-100 hover:bg-slate-200 text-dark w-[3rem] h-[3rem]"
+            }
+            action={togglePlayer}
+          />
+        </div>
+      </>
+    )
+  }
+
+  const PlayerView = () => {
+    return <Player />
   }
 
   console.log(programData)
@@ -54,19 +87,7 @@ const ProgramDetailsModal: React.FC<ModalProps> = ({
                 <XMarkIcon className="w-5 h-5" />
               </button>
             </div>
-            <img
-              src={getImageSrcWithAPIKey(programData.backdrop_path)}
-              alt=""
-              className="w-full"
-            />
-            <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <RoundActionButton
-                icon={"play"}
-                styles={
-                  "bg-slate-100 hover:bg-slate-200 text-dark w-[3rem] h-[3rem]"
-                }
-              />
-            </div>
+            {isPlayer ? <PlayerView /> : <PosterView />}
           </div>
           <div className="py-4 px-2">
             <div className="flex justify-between items-center">

@@ -19,6 +19,7 @@ const RoundActionButton: React.FC<any> = ({ icon, styles, action, hoverText }) =
     <div
       className={`rounded-full border-white border-2 p-1 w-8 h-8 flex justify-center items-center tooltip tooltip-white ${styles}`}
       data-tip={hoverText}
+      onClick={action}
     >
       {getIcon(icon)}
     </div>
