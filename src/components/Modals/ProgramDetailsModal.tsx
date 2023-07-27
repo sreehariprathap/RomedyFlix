@@ -76,12 +76,12 @@ const ProgramDetailsModal: React.FC<ModalProps> = ({
       >
         <form
           method="dialog"
-          className="w-[55rem] overflow-hidden rounded-2xl shadow-xl bg-dark relative "
+          className="w-[55rem] overflow-hidden rounded-2xl shadow-xl bg-dark-third relative "
         >
           <div className="h-[25rem] overflow-hidden">
             <div className="absolute w-full bg-transparent hover:bg-gradient-to-b from-black to-transparent ease-in-out transition duration-300 h-10">
               <button
-                className="absolute right-0 px-2 py-1"
+                className="absolute right-0 px-2 py-1 border-transparent"
                 onClick={closeModal}
               >
                 <XMarkIcon className="w-5 h-5" />

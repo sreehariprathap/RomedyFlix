@@ -27,6 +27,7 @@ const AppButton: React.FC<AppButtonProps> = ({
     <Link to={link}>
       <div
         className={`${styles} flex py-2 px-3 rounded-md gap-2 text-bold capitalize transition duration-200 ease-linear`}
+        onClick={action}
       >
         {text}
         <span>{getIcon(icon)}</span>

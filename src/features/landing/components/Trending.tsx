@@ -11,6 +11,7 @@ import { Languages, MovieGenre, TVgenre } from "../../../config/Constants"
 import AppButton from "../../../components/Buttons/AppButton"
 import Carousal from "../../../components/Carousal/Carousal"
 import { TrendingData } from "../types/trending.interface"
+import ProgramDetailsModal from "../../../components/Modals/ProgramDetailsModal"
 
 interface TrendingProps {
   trendingData: TrendingData[]
@@ -53,18 +54,20 @@ const Trending: React.FC<TrendingProps> = ({ trendingData }) => {
                 <h1 className="text-5xl text-white ">
                   {trending.name || trending.title}
                 </h1>
-                <div className="flex gap-3 my-4">
-                  <AppButton
-                    styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
-                    text={"play"}
-                    icon={"play"}
-                  />
-                  <AppButton
-                    styles={"bg-dark text-white hover:bg-dark-secondary"}
-                    text={"more info"}
-                    icon={"info"}
-                  />
-                </div>
+                <ProgramDetailsModal id="my_modal_5" programData={trending}>
+                  <div className="flex gap-3 my-4">
+                    <AppButton
+                      styles={"bg-slate-100 hover:bg-slate-200 text-dark"}
+                      text={"play"}
+                      icon={"play"}
+                    />
+                    <AppButton
+                      styles={"bg-dark text-white hover:bg-dark-secondary"}
+                      text={"more info"}
+                      icon={"info"}
+                    />
+                  </div>
+                </ProgramDetailsModal>
                 <div className="flex items-center gap-5">
                   <p className="text-black bg-white rounded-full font-medium px-2 py-1 shadow-xl shadow-[#ffffff3c]">
                     {Languages[trending.original_language]}
@@ -97,8 +100,40 @@ const Trending: React.FC<TrendingProps> = ({ trendingData }) => {
         </div>
         <div className="bg-transparent group h-[20rem] flex gap-4 items-start duration-150 ease-linear group-hover:h-[33rem] px-5">
           <Carousal
+            title={"Adventure"}
+            genreId={"12"}
+            cardType={"SimpleCard"}
+            styles={"w-[100vw] oveflow-x-hidden"}
+          />
+        </div>
+        <div className="bg-transparent group h-[20rem] flex gap-4 items-start duration-150 ease-linear group-hover:h-[33rem] px-5">
+          <Carousal
+            title={"Fantasy"}
+            genreId={"14"}
+            cardType={"SimpleCard"}
+            styles={"w-[100vw] oveflow-x-hidden"}
+          />
+        </div>
+        <div className="bg-transparent group h-[20rem] flex gap-4 items-start duration-150 ease-linear group-hover:h-[33rem] px-5">
+          <Carousal
             title={"Drama"}
             genreId={"18"}
+            cardType={"SimpleCard"}
+            styles={"w-[100vw] oveflow-x-hidden"}
+          />
+        </div>
+        <div className="bg-transparent group h-[20rem] flex gap-4 items-start duration-150 ease-linear group-hover:h-[33rem] px-5">
+          <Carousal
+            title={"Science Fiction"}
+            genreId={"878"}
+            cardType={"SimpleCard"}
+            styles={"w-[100vw] oveflow-x-hidden"}
+          />
+        </div>
+        <div className="bg-transparent group h-[20rem] flex gap-4 items-start duration-150 ease-linear group-hover:h-[33rem] px-5">
+          <Carousal
+            title={"Animation"}
+            genreId={"16"}
             cardType={"SimpleCard"}
             styles={"w-[100vw] oveflow-x-hidden"}
           />
