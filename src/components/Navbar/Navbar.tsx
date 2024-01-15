@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="flex gap-14 items-center w-full justify-between">
         <div className="flex items-center gap-10">
           <img
-            src="public/Romedyflix.svg"
+            src="/Romedyflix.svg"
             alt="logo"
             className="w-56"
           />
