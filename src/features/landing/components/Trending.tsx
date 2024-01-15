@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Pagination, Navigation, Autoplay } from "swiper"
 import "swiper/css"
 import "swiper/css/pagination"

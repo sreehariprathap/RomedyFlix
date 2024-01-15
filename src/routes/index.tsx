@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Applayout from "../layouts/Applayout"
 import LandingLayout from "../features/landing/layouts/LandingLayout"
@@ -7,6 +8,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Applayout>
+        {/* @ts-ignore */}
         <LandingLayout />
       </Applayout>
     ),

@@ -1,5 +1,5 @@
 import Axios, { AxiosRequestConfig } from "axios"
-import { API_URL, TMDB_API_KEY, TMDB_BEARER_TOKEN } from "../config"
+import { API_URL, TMDB_BEARER_TOKEN } from "../config"
 import storage from "../utils/storage"
 import { useNotificationStore } from "../stores/notifications"
 
